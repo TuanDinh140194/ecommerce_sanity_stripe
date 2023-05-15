@@ -1,26 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
-import { BsBagCheckFill } from "react-icons/bs";
-import { runFireworks } from "@/lib/utils";
+import { BsFillBagXFill } from "react-icons/bs";
 import { useStateContext } from "@/context/StateContext";
 
-const Success = () => {
+const Canceled = () => {
   const { setCartItems, setTotalPrice, setTotalQuantity } = useStateContext();
   useEffect(() => {
     localStorage.clear();
     setCartItems([]);
     setTotalPrice(0);
     setTotalQuantity(0);
-    runFireworks();
   }, []);
   return (
     <div className="success-wrapper">
       <div className="success">
         <p className="icon">
-          <BsBagCheckFill />
+          <BsFillBagXFill color="red"/>
         </p>
-        <h2>Thank you for your order!</h2>
-        <p className="email-msg">Check your email inbox for the receipt.</p>
+        <h2>The order have been canceled!</h2>
+        <p className="email-msg">Thank you for your patient.</p>
         <p className="description">
           If you have any questions, please email
           <a className="email" href="mailto:tuandinh0114@gmail.com">
@@ -37,4 +35,4 @@ const Success = () => {
   );
 };
 
-export default Success;
+export default Canceled;
