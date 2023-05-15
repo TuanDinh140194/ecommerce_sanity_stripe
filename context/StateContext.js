@@ -30,6 +30,8 @@ export const StateContext = ({ children }) => {
   // Update local storage whenever cart items change
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("totalPrice", totalPrice);
+    localStorage.setItem("totalQuantity", totalQuantity);
   }, [cartItems]);
 
   let foundProduct;
@@ -91,10 +93,6 @@ export const StateContext = ({ children }) => {
     );
     setTotalQuantity((prevTotalQuantity) => prevTotalQuantity + quantity);
 
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    localStorage.setItem("totalPrice", totalPrice);
-    localStorage.setItem("totalQuantity", totalQuantity);
-
     toast.success(`${quantity} ${product.name} added to the cart.`);
   };
 
@@ -111,10 +109,6 @@ export const StateContext = ({ children }) => {
     );
 
     setCartItems(newCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    localStorage.setItem("totalPrice", totalPrice);
-    localStorage.setItem("totalQuantity", totalQuantity);
-
   };
 
   // const toggleCartItemQuantity = (id, value) => {
