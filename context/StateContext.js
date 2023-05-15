@@ -15,6 +15,9 @@ export const StateContext = ({ children }) => {
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
+      setQty(JSON.parse(storedCartItems.quantity));
+      setTotalPrice(JSON.parse(storedCartItems.totalPrice));
+      setTotalQuantity(JSON.parse(storedCartItems.totalQuantity));
     }
   }, []);
 
